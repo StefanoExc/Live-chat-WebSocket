@@ -68,19 +68,19 @@ function sendMessage(event) {
 
 
 function onMessageReceived(payload) {
+
     var message = JSON.parse(payload.body);
 
     var messageElement = document.createElement('li');
 
     if(message.type === 'JOIN') {
-        console.log("sus")
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' joined!';
+        message.content = message.sender + ' è entrato!';
     } else if (message.type === 'LEAVE') {
-        console.log("sus12")
         messageElement.classList.add('event-message');
-        message.content = message.sender + ' left!';
+        message.content = message.sender + ' è uscito!';
     } else {
+
         messageElement.classList.add('chat-message');
 
         var avatarElement = document.createElement('i');

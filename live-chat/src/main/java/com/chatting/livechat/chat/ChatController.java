@@ -16,10 +16,13 @@ public class ChatController {
         return chatMessage;
     }
 
+    @MessageMapping("chat.addUser")
+    @SendTo("/topic/public")
     public ChatMessage addUser(@Payload ChatMessage chatMessage, SimpMessageHeaderAccessor headerAccessor) {
 
         //Aggiunge lo username alla websocket session
         headerAccessor.getSessionAttributes().put("username", chatMessage.getSender());
+        System.out.println(chatMessage);
         return chatMessage;
     }
 }
